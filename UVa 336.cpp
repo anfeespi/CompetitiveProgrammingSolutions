@@ -15,7 +15,8 @@ int main(){
         int s, ttl;
         
         //BFS pero con map :D
-        while(cin>>s>>ttl && s != 0 && ttl != 0){
+        while(cin>>s>>ttl){
+            if(s == 0 && ttl == 0) break;
             queue<int> q;
             map<int, int> dist;
             

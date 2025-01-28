@@ -2,7 +2,14 @@
 
 using namespace std;
 
-vector<int> arr(6);
+map<char, int> lets = {
+    {'M', 1},
+    {'A', 3},
+    {'R', 2},
+    {'G', 1},
+    {'I', 1},
+    {'T', 1}
+};
 
 int main(){
     int n;
@@ -10,36 +17,27 @@ int main(){
     cin>>n;
     cin.ignore();
     while(n--){
-        fill(arr.begin(), arr.end(), 0);
-        getline(cin, line);
+        int pzs = INT_MAX;
         
-        for(int i = 0; i < line.length(); i++){
-            switch(line[i]){
-                case 'M':
-                    arr[0]++;
-                    break;
-                case 'A':
-                    arr[1]++;
-                    break;
-                case 'R':
-                    arr[2]++;
-                    break;
-                case 'G':
-                    arr[3]++;
-                    break;
-                case 'I':
-                    arr[4]++;
-                    break;
-                case 'T':
-                    arr[5]++;
-                    break;
+        getline(cin, line);
+        map<char, int> cont;
+        
+        for(char l : line){
+            cont[l]++;
+        }
+        
+        for(auto it : lets){
+            char l = it.first;
+            int q = it.second;
+            
+            if(cont.find(l) != cont.end()){
+                pzs = min(pzs, cont[l] / q);
+            }else{
+                pzs = 0;
+                break;
             }
         }
         
-        arr[1] /= 3;
-        arr[2] /= 2;
-        
-        cout<<*min_element(arr.begin(), arr.end())<<endl;
-        
+        cout<<pzs<<endl;
     }
 }

@@ -4,9 +4,13 @@ using namespace std;
 
 int N;
 vector<int> s(14);
+bool pr = true;
 
 int main(){
     while(cin>>N && N != 0){
+        if(pr) pr = false;
+        else cout<<endl;
+        
         for(int i = 0; i < N; i++) cin>>s[i];
         
         
@@ -23,7 +27,5 @@ int main(){
                 }
             }
         }
-        
-        cout<<endl;
     }
 }

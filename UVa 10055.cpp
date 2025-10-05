@@ -3,9 +3,9 @@
 using namespace std;
 
 int main(){
-    int i, j;
+    unsigned long long int i, j;
     
     while(cin>>i>>j){
-        cout<<abs(i-j)<<endl;
+        cout<<(i > j ? i - j : j - i)<<endl;
     }
 }
